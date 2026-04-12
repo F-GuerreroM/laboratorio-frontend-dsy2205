@@ -1,0 +1,134 @@
+/* =========================================
+   DISEÑO BASE (MÓVIL PRIMERO)
+   ========================================= */
+.dashboard-container {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f7f6;
+  min-height: 100vh;
+}
+
+/* Header */
+.top-bar {
+  background-color: #0056b3;
+  color: white;
+  padding: 15px 20px;
+  display: flex;
+  flex-direction: column; /* Móvil: Apilado verticalmente */
+  gap: 10px;
+  align-items: center;
+}
+
+.user-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+button { cursor: pointer; border: none; border-radius: 5px; padding: 8px 12px; font-weight: bold; }
+.btn-perfil { background-color: #f8f9fa; color: #333; }
+.btn-logout { background-color: #dc3545; color: white; }
+.btn-cita { background-color: #28a745; color: white; width: 100%; padding: 10px; }
+
+/* Contenido Main */
+.main-content { padding: 20px; }
+.header-seccion { margin-bottom: 20px; text-align: center; }
+
+/* Grid del Dumb Component (Por defecto 1 columna para móvil) */
+.lab-grid {
+  display: grid;
+  grid-template-columns: 1fr; 
+  gap: 15px;
+}
+
+.lab-card {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.lab-info h3 { margin: 0 0 10px 0; color: #0056b3; }
+.lab-info p { margin: 5px 0; color: #555; }
+
+/* =========================================
+   TAMAÑO TABLET (768px o más)
+   ========================================= */
+@media (min-width: 768px) {
+  .top-bar {
+    flex-direction: row; /* Tablet: En una sola línea horizontal */
+    justify-content: space-between;
+  }
+  
+  .header-seccion { text-align: left; }
+
+  .lab-grid {
+    grid-template-columns: repeat(2, 1fr); /* Tablet: 2 Columnas */
+  }
+}
+
+/* =========================================
+   TAMAÑO ESCRITORIO (1024px o más)
+   ========================================= */
+@media (min-width: 1024px) {
+  .lab-grid {
+    grid-template-columns: repeat(3, 1fr); /* Escritorio: 3 Columnas */
+    gap: 20px;
+  }
+
+  .lab-card {
+    transition: transform 0.2s ease;
+  }
+
+  .lab-card:hover {
+    transform: translateY(-5px); /* Efecto hover solo en PC */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+  }
+}
+
+/* index.css */
+.dashboard-container {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f7f6;
+  min-height: 100vh;
+}
+
+.top-bar {
+  background-color: #0056b3;
+  color: white;
+  padding: 15px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+.top-bar h2 { margin: 0; }
+
+.user-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.user-actions span { font-weight: 500; }
+
+button { cursor: pointer; border: none; border-radius: 5px; padding: 8px 12px; font-weight: bold; }
+.btn-perfil { background-color: #f8f9fa; color: #333; }
+.btn-logout { background-color: #dc3545; color: white; }
+
+.main-content { padding: 20px; }
+.header-seccion { margin-bottom: 20px; text-align: center; }
+.header-seccion h2 { color: #333; margin-top: 0;}
+
+/* Tablet en adelante */
+@media (min-width: 768px) {
+  .top-bar { flex-direction: row; justify-content: space-between; }
+  .header-seccion { text-align: left; }
+}

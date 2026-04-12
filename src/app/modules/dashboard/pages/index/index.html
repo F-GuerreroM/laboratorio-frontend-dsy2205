@@ -1,0 +1,26 @@
+<div class="dashboard-container">
+  
+  <header class="top-bar">
+    <div class="logo">
+      <h2>Mi Laboratorio</h2>
+    </div>
+    <div class="user-actions">
+      <span class="perfil-nombre">Hola, Usuario</span>
+      <button class="btn-perfil" (click)="editarPerfil()">⚙️ Editar Perfil</button>
+      <button class="btn-logout" routerLink="/login">Cerrar Sesión</button>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <div class="header-seccion">
+      <h2>Laboratorios Disponibles</h2>
+      <p>Selecciona un laboratorio para agendar tu hora médica.</p>
+    </div>
+
+    <app-lab-list 
+      [laboratorios]="listaLaboratorios" 
+      (agregarCita)="abrirModalCita($event)">
+    </app-lab-list>
+
+  </main>
+</div>

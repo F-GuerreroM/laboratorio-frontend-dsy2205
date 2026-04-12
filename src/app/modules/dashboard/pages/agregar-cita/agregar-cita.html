@@ -1,0 +1,40 @@
+<div class="dashboard-container">
+  <header class="top-bar">
+    <div class="logo"><h2>Agendar Cita</h2></div>
+    <button class="btn-perfil" routerLink="/dashboard">← Volver</button>
+  </header>
+
+  <main class="main-content" style="display: flex; justify-content: center; margin-top: 30px;">
+    <div class="perfil-card">
+      <h3>Reserva de Laboratorio #{{ nuevaCita.idLaboratorio }}</h3>
+      <p style="color: #666; font-size: 0.9em; margin-bottom: 20px;">
+        Completa los detalles para tu examen clínico.
+      </p>
+
+      <form #citaForm="ngForm" (ngSubmit)="onAgendar()">
+        <div class="form-group">
+          <label>Fecha y Hora</label>
+          <input 
+            type="datetime-local" 
+            name="fechaHora" 
+            [(ngModel)]="nuevaCita.fechaHora" 
+            required>
+        </div>
+
+        <div class="form-group">
+          <label>Observaciones (Opcional)</label>
+          <textarea 
+            name="observaciones" 
+            [(ngModel)]="nuevaCita.observaciones" 
+            rows="4" 
+            style="width: 100%; border-radius: 5px; border: 1px solid #ddd; padding: 8px;">
+          </textarea>
+        </div>
+
+        <button type="submit" class="btn-primary" [disabled]="citaForm.invalid">
+          Confirmar Cita
+        </button>
+      </form>
+    </div>
+  </main>
+</div>

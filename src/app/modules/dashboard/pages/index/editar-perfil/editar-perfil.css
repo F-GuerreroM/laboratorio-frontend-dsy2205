@@ -1,0 +1,39 @@
+.dashboard-container {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f7f6;
+  min-height: 100vh;
+}
+
+.top-bar {
+  background-color: #0056b3;
+  color: white;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.top-bar h2 { margin: 0; }
+button { cursor: pointer; border: none; border-radius: 5px; padding: 8px 12px; font-weight: bold; }
+.btn-perfil { background-color: #f8f9fa; color: #333; }
+.btn-primary { background-color: #0056b3; color: white; width: 100%; padding: 12px; font-size: 16px; transition: background 0.3s; }
+.btn-primary:hover:not(:disabled) { background-color: #004494; }
+.btn-primary:disabled { background-color: #ccc; cursor: not-allowed; }
+
+/* Estilos de la Tarjeta */
+.perfil-card {
+  background: white;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 400px;
+}
+
+.form-group { margin-bottom: 15px; }
+.form-group label { display: block; margin-bottom: 5px; color: #333; font-weight: 500; }
+.form-group input {
+  width: 100%; padding: 10px; border: 1px solid #ddd;
+  border-radius: 5px; box-sizing: border-box; font-size: 14px;
+}
+.form-group input:focus { border-color: #0056b3; outline: none; }
