@@ -1,0 +1,6 @@
+projectKey=angular-front
+serverUrl=http://localhost:9000
+serverVersion=26.3.0.120487
+dashboardUrl=http://localhost:9000/dashboard?id=angular-front
+ceTaskId=d6a90311-9499-4199-bf94-de52a4d74421
+ceTaskUrl=http://localhost:9000/api/ce/task?id=d6a90311-9499-4199-bf94-de52a4d74421
