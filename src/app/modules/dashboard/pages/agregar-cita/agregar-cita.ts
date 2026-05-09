@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { environment } from '../../../../../environments/environment';
 
 @Component({
   selector: 'app-agregar-cita',
@@ -34,7 +35,7 @@ export class AgregarCitaComponent implements OnInit {
   onAgendar() {
     console.log('Enviando cita al MS Citas (8083):', this.nuevaCita);
     
-    const url = 'http://localhost:8083/api/citas';
+    const url = environment.apiUrlCitas;
 
     this.http.post(url, this.nuevaCita).subscribe({
       next: (res) => {

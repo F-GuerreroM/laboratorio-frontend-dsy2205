@@ -2,6 +2,7 @@ import '@angular/compiler';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { EditarPerfilComponent } from './editar-perfil';
 import { of, throwError } from 'rxjs';
+import { environment } from '../../../../../../environments/environment';
 
 describe('EditarPerfilComponent - Pruebas de Modulo', () => {
   let component: EditarPerfilComponent;
@@ -9,7 +10,7 @@ describe('EditarPerfilComponent - Pruebas de Modulo', () => {
   let mockRouter: any;
 
   beforeEach(() => {
-    // Definimos los mocks para HttpClient y Router
+    
     mockHttp = {
       get: vi.fn(),
       put: vi.fn()
@@ -17,12 +18,10 @@ describe('EditarPerfilComponent - Pruebas de Modulo', () => {
     mockRouter = {
       navigate: vi.fn()
     };
-
-    // Instanciamos la clase con los mocks
+  
     component = new EditarPerfilComponent(mockHttp, mockRouter);
     
-    // Mock de alert para evitar errores de entorno (Node vs Browser)
-    globalThis.alert = vi.fn();
+       globalThis.alert = vi.fn();
   });
 
   it('Test correcto instanciacion del componente de edicion', () => {
@@ -35,7 +34,7 @@ describe('EditarPerfilComponent - Pruebas de Modulo', () => {
 
     component.cargarDatosActuales();
 
-    expect(mockHttp.get).toHaveBeenCalledWith(`http://localhost:8082/api/usuarios/8`);
+    expect(mockHttp.get).toHaveBeenCalledWith(`${environment.apiUrlUsuarios}/api/usuarios/8`);
     expect(component.perfil).toEqual(mockUsuario);
   });
 
@@ -54,7 +53,7 @@ describe('EditarPerfilComponent - Pruebas de Modulo', () => {
     component.onActualizar();
 
     expect(mockHttp.put).toHaveBeenCalledWith(
-      `http://localhost:8082/api/usuarios/8`, 
+      `${environment.apiUrlUsuarios}/8`, 
       component.perfil
     );
     expect(globalThis.alert).toHaveBeenCalledWith('¡Perfil actualizado con éxito!');

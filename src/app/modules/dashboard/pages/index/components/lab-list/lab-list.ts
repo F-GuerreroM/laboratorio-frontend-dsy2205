@@ -50,5 +50,6 @@ import { CommonModule } from '@angular/common';
 })
 export class LabListComponent {
   @Input() laboratorios: any[] = []; 
-  @Output() agregarCita = new EventEmitter<number>(); 
+  @Output() agregarCita = new EventEmitter<number>();
+  @Input() isAdmin: boolean = false;
 }

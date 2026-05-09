@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import { RouterModule } from '@angular/router'; // <-- Necesario para el routerLink
+import { RouterModule } from '@angular/router';
+import { environment } from '../../../../../environments/environment';
 
 @Component({
   selector: 'app-recuperar',
@@ -21,7 +22,7 @@ export class RecuperarComponent {
   onRecuperar() {
     console.log('Solicitando recuperación para:', this.email);
     
-    const urlMicroservicio = 'http://localhost:8082/api/usuarios/recuperar'; 
+    const urlMicroservicio = `${environment.apiUrlUsuarios}/recuperar`; 
     
     this.http.post(urlMicroservicio, { email: this.email }).subscribe({
       next: (respuesta) => {

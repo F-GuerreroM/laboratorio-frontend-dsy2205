@@ -5,9 +5,9 @@
       <h2>Mi Laboratorio</h2>
     </div>
     <div class="user-actions">
-      <span class="perfil-nombre">Hola, Usuario</span>
+      <span class="perfil-nombre">Hola, {{ nombreUsuario }}</span>
       <button class="btn-perfil" (click)="editarPerfil()">⚙️ Editar Perfil</button>
-      <button class="btn-logout" routerLink="/login">Cerrar Sesión</button>
+      <button class="btn-logout" (click)="cerrarSesion()">Cerrar Sesión</button>
     </div>
   </header>
 
@@ -15,10 +15,15 @@
     <div class="header-seccion">
       <h2>Laboratorios Disponibles</h2>
       <p>Selecciona un laboratorio para agendar tu hora médica.</p>
+
+      <button *ngIf="isAdmin" class="btn btn-primary btn-admin" (click)="crearNuevoLaboratorio()">
+        + Añadir Laboratorio
+      </button>
     </div>
 
     <app-lab-list 
       [laboratorios]="listaLaboratorios" 
+      [isAdmin]="isAdmin" 
       (agregarCita)="abrirModalCita($event)">
     </app-lab-list>
 

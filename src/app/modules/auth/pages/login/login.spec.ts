@@ -2,6 +2,7 @@ import '@angular/compiler';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { LoginComponent } from './login';
 import { of, throwError } from 'rxjs';
+import { environment } from '../../../../../environments/environment';
 
 describe('LoginComponent - Pruebas de Modulo', () => {
   let component: LoginComponent;
@@ -39,7 +40,7 @@ describe('LoginComponent - Pruebas de Modulo', () => {
 
     
     expect(mockHttp.post).toHaveBeenCalledWith(
-      'http://localhost:8082/api/usuarios/login', 
+      `${environment.apiUrlUsuarios}/login`, 
       component.credenciales
     );
     expect(globalThis.alert).toHaveBeenCalledWith('Bienvenido al sistema');

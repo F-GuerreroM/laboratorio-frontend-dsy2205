@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';   
 import { HttpClient } from '@angular/common/http';
 import { Router, RouterModule } from '@angular/router';
+import { environment } from '../../../../../environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -21,17 +22,23 @@ export class LoginComponent {
 
   constructor(private http: HttpClient, private router: Router) {}
 
-  onLogin() {
+onLogin() {
     console.log('Validaciones pasadas. Enviando al Microservicio:', this.credenciales);
 
-    // ACTUALIZADO AL PUERTO 8082
-    const urlMicroservicio = 'http://localhost:8082/api/usuarios/login'; 
+    const urlMicroservicio = `${environment.apiUrlUsuarios}/login`; 
 
     this.http.post(urlMicroservicio, this.credenciales).subscribe({
       next: (respuesta: any) => {
-        console.log('¡Login exitoso!', respuesta);
+        console.log('¡Login exitoso!', respuesta);        
+
+        localStorage.setItem('userRole', respuesta.rol); 
+        localStorage.setItem('userName', respuesta.username);
+        if (respuesta.id) {
+            localStorage.setItem('userId', respuesta.id); 
+        }
+
         alert('Bienvenido al sistema');
-       this.router.navigate(['/dashboard']);
+        this.router.navigate(['/dashboard']);
       },
       error: (error) => {
         console.error('Error al iniciar sesión', error);

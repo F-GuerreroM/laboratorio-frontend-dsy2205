@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router, RouterModule } from '@angular/router';
+import { environment } from '../../../../../../environments/environment';
 
 @Component({
   selector: 'app-editar-perfil',
@@ -31,7 +32,7 @@ export class EditarPerfilComponent implements OnInit {
 
   cargarDatosActuales() {
     console.log('Cargando datos del usuario ID:', this.usuarioId);
-    this.http.get(`http://localhost:8082/api/usuarios/${this.usuarioId}`).subscribe({
+    this.http.get(`${environment.apiUrlUsuarios}/${this.usuarioId}`).subscribe({
       next: (data: any) => {
         this.perfil = data;
       },
@@ -41,7 +42,7 @@ export class EditarPerfilComponent implements OnInit {
 
   onActualizar() {
     console.log('Enviando actualización al MS Usuarios...');
-    this.http.put(`http://localhost:8082/api/usuarios/${this.usuarioId}`, this.perfil).subscribe({
+    this.http.put(`${environment.apiUrlUsuarios}/${this.usuarioId}`, this.perfil).subscribe({
       next: (respuesta) => {
         alert('¡Perfil actualizado con éxito!');
         this.router.navigate(['/dashboard']); // Lo devolvemos al inicio

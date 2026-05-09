@@ -2,6 +2,7 @@ import '@angular/compiler';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { AgregarCitaComponent } from './agregar-cita';
 import { of, throwError } from 'rxjs';
+import { environment } from '../../../../../environments/environment';
 
 describe('AgregarCitaComponent - Pruebas de Modulo', () => {
   let component: AgregarCitaComponent;
@@ -43,7 +44,7 @@ describe('AgregarCitaComponent - Pruebas de Modulo', () => {
     component.onAgendar();
 
     expect(mockHttp.post).toHaveBeenCalledWith(
-      'http://localhost:8083/api/citas',
+      `${environment.apiUrlCitas}`,
       component.nuevaCita
     );
     expect(globalThis.alert).toHaveBeenCalledWith('¡Cita agendada con éxito!');
